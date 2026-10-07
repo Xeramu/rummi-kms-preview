@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - Rummi KMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Ornamen Latar Belakang -->
+    <div class="ornament-bg-top">
+        <img src="assets/img/burung.png" alt="" onerror="this.style.display='none';">
+    </div>
+    <div class="ornament-bg-bottom">
+        <img src="assets/img/kopi.png" alt="" onerror="this.style.display='none';">
+    </div>
+
+    <main class="staff-container" style="justify-content: center; min-height: 100vh; padding-top: 20px;">
+        <!-- Kartu Login Form -->
+        <div class="staff-detail-card" style="max-width: 360px; text-align: center;">
+            <div style="margin-bottom: 16px;">
+                <img src="assets/img/logo.png" alt="Rummi Logo" style="max-width: 130px; height: auto;" onerror="this.style.display='none';">
+                <h1 class="form-card-title" style="margin-top: 10px; margin-bottom: 2px;">Rummi KMS</h1>
+                <p style="font-size: 0.9rem; color: #7A1810; opacity: 0.8;">Knowledge Management System</p>
+            </div>
+
+            <form onsubmit="handleLoginSubmit(event)" class="user-pill-form">
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Nama Pengguna</label>
+                    <input type="text" id="username" class="input-pill-small" value="manager_rummi" placeholder="Username..." required>
+                </div>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Kata Sandi</label>
+                    <input type="password" id="password" class="input-pill-small" value="password123" placeholder="Kata sandi..." required>
+                </div>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Akses Sebagai (Mockup)</label>
+                    <select id="userRole" class="input-pill-small select-pill">
+                        <option value="Manager">Manager Operasional</option>
+                        <option value="Staff">Staf Bar / Barista</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit-pill" style="margin-top: 10px;">
+                    Masuk ke Sistem
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Pita Batik Bawah Statis -->
+    <div class="bottom-batik-band"></div>
+
+    <script>
+        function handleLoginSubmit(e) {
+            e.preventDefault();
+            const role = document.getElementById('userRole').value;
+            localStorage.setItem('rummi_user_role', role.toLowerCase());
+            
+            // Redirect sesuai pilihan role
+            if (role === 'Manager') {
+                window.location.href = 'dashboard.html';
+            } else {
+                window.location.href = 'catalog.html';
+            }
+        }
+    </script>
+</body>
+</html>
