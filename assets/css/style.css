@@ -1,0 +1,1609 @@
+/* =========================================================
+   RUMMI KNOWLEDGE BASE - DESIGN SYSTEM (MOBILE-FIRST)
+   ========================================================= */
+
+:root {
+    /* Identitas Visual Brand Rummi */
+    --brand-maroon: #7A1810;
+    --brand-accent: #d97706;
+    --bg-cream: #FFFAEC;
+    --card-white: #ffffff;
+    --border-maroon: #7A1810;
+    --border-light: #e2e8f0;
+    --text-maroon: #7A1810;
+    --text-muted: #64748b;
+    --font-main: 'Gayathri', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-cream);
+    color: var(--text-maroon);
+    font-family: var(--font-main);
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= 1. HEADER BAR TOPBAR (FIXED DI ATAS) ================= */
+.app-topbar {
+    width: 100%;
+    height: 80px;
+    background-color: var(--brand-maroon);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.topbar-btn {
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-family: var(--font-main);
+    font-weight: 400;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.topbar-btn:hover {
+    opacity: 0.85;
+}
+
+.topbar-manager-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.topbar-link {
+    color: #fde68a;
+    font-size: 0.95rem;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.topbar-link:hover {
+    text-decoration: underline;
+}
+
+/* ================= 2. ORNAMEN LATAR BELAKANG STATIS (FIXED) ================= */
+.page-viewport {
+    flex: 1;
+    position: relative;
+    width: 100%;
+}
+
+.ornament-bg-top {
+    position: fixed;
+    top: 90px;
+    right: -10px;
+    width: clamp(140px, 35vw, 240px);
+    opacity: 0.35;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+
+.ornament-bg-bottom {
+    position: fixed;
+    bottom: 80px;
+    left: -20px;
+    width: clamp(160px, 40vw, 260px);
+    opacity: 0.3;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+
+.ornament-bg-top img,
+.ornament-bg-bottom img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ================= 3. PITA BATIK BAWAH STATIS (FIXED) ================= */
+.bottom-batik-band {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background-image: url('../img/batik-rummi-join_3_v3.png');
+    background-repeat: repeat-x;
+    background-position: bottom center;
+    background-size: auto 75px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ================= 4. KONTAINER DENGAN PADDING AMAN ================= */
+.staff-container {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 104px 20px 110px 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 104px 16px 110px 16px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+
+/* ================= 5. FORM CONTROLS & TOMBOL ================= */
+.search-form-pill {
+    width: 100%;
+    max-width: 360px;
+    height: 52px;
+    background: var(--card-white);
+    border: 1px solid var(--border-maroon);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px 0 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 6px rgba(122, 24, 16, 0.04);
+}
+
+.search-input-pill {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--brand-maroon);
+}
+
+.search-input-pill::placeholder {
+    color: rgba(122, 24, 16, 0.65);
+    font-size: 0.95rem;
+}
+
+.search-submit-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 4px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: var(--card-white);
+    min-height: 44px;
+    font-family: inherit;
+    color: #1e293b;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--brand-accent);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    min-height: 44px;
+}
+
+.btn-primary {
+    background: var(--brand-maroon);
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background: #f1f5f9;
+    color: var(--text-muted);
+    border: 1px solid var(--border-light);
+}
+
+/* ================= 6. KARTU MENU STAF ================= */
+.welcome-heading {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.search-meta {
+    font-size: 0.9rem;
+    color: var(--brand-maroon);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.reset-link {
+    color: #dc2626;
+    margin-left: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-cards-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.staff-menu-card {
+    width: 100%;
+    max-width: 360px;
+    min-height: 180px;
+    background: var(--card-white);
+    border: 1px solid var(--border-maroon);
+    border-radius: 20px;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 12px rgba(122, 24, 16, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.staff-menu-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(122, 24, 16, 0.1);
+}
+
+.card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.card-menu-title {
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    margin: 0;
+}
+
+.card-tag {
+    font-size: 0.9rem;
+    color: var(--brand-maroon);
+    opacity: 0.85;
+    white-space: nowrap;
+}
+
+.card-menu-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--brand-maroon);
+    margin-bottom: 14px;
+    flex: 1;
+}
+
+.card-footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--brand-maroon);
+    opacity: 0.85;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(122, 24, 16, 0.2);
+}
+
+.card-arrow {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* ================= 7. HALAMAN DETAIL SOP ================= */
+.detail-page-flow {
+    gap: 20px;
+}
+
+.back-nav-row {
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 6px;
+}
+
+.back-circle-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 3.5px solid var(--brand-maroon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--brand-maroon);
+    font-size: 1.4rem;
+    font-weight: bold;
+    flex-shrink: 0;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.back-circle-btn:hover {
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+}
+
+.back-nav-label {
+    font-size: 1.45rem;
+    color: var(--brand-maroon);
+    font-weight: 400;
+}
+
+.staff-detail-card {
+    width: 100%;
+    max-width: 360px;
+    background: var(--card-white);
+    border: 1px solid var(--border-maroon);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(122, 24, 16, 0.05);
+}
+
+.detail-menu-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.detail-menu-desc {
+    font-size: 0.95rem;
+    color: var(--brand-maroon);
+    line-height: 1.5;
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+.detail-menu-tag {
+    font-size: 0.95rem;
+    color: var(--brand-maroon);
+    opacity: 0.85;
+}
+
+.detail-section-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    line-height: 1.25;
+    margin-bottom: 18px;
+}
+
+.detail-grammage-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.detail-grammage-table th {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--brand-maroon);
+    padding-bottom: 10px;
+}
+
+.detail-grammage-table td {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--brand-maroon);
+    padding: 6px 0;
+}
+
+.col-ingredient {
+    text-align: left;
+}
+
+.col-qty {
+    text-align: right;
+}
+
+.detail-steps-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detail-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.step-circle-badge {
+    width: 44px;
+    height: 44px;
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-text-content {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--brand-maroon);
+    line-height: 1.5;
+    padding-top: 8px;
+}
+
+/* ================= 8. TABEL DATA & GRID MANAJER ================= */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    background: var(--card-white);
+}
+
+.grammage-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+.grammage-table th, .grammage-table td {
+    padding: 12px 14px;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #1e293b;
+}
+
+.grammage-table tr:not(:last-child) td {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.grammage-table th {
+    background: #f8fafc;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.badge {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.responsive-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ================= 9. MEDIA QUERIES TABLET & DESKTOP ================= */
+@media (min-width: 768px) {
+    .staff-container {
+        max-width: 820px;
+    }
+
+    .menu-cards-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+    }
+
+    .staff-menu-card,
+    .search-form-pill,
+    .back-nav-row,
+    .staff-detail-card {
+        max-width: 100%;
+    }
+
+    .responsive-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+/* ================= TAMBAHAN MODAL AKSI & FORM USER ================= */
+.topbar-action-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Modal Popup Overlay */
+.action-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.action-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.action-modal-card {
+    width: 90%;
+    max-width: 360px;
+    background: #ffffff;
+    border: 2px solid var(--brand-maroon);
+    border-radius: 20px;
+    padding: 22px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.25s ease;
+}
+
+.action-modal-overlay.active .action-modal-card {
+    transform: translateY(0);
+}
+
+.modal-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    border-bottom: 1px dashed rgba(122, 24, 16, 0.25);
+    padding-bottom: 10px;
+}
+
+.modal-card-header h3 {
+    font-size: 1.35rem;
+    color: var(--brand-maroon);
+    font-weight: 400;
+}
+
+.btn-close-modal {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--brand-maroon);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-action-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-action-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #FFFAEC;
+    border: 1px solid var(--brand-maroon);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--brand-maroon);
+    font-size: 1.05rem;
+    font-weight: 400;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.modal-action-item:hover {
+    background: #fef3c7;
+    transform: translateX(4px);
+}
+
+.action-icon {
+    font-size: 1.25rem;
+}
+
+/* ================= FORM USER PILL STYLING ================= */
+.form-card-title {
+    font-size: 1.45rem;
+    color: var(--brand-maroon);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.user-pill-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.form-group-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+}
+
+.form-label-custom {
+    font-size: 0.95rem;
+    color: var(--brand-maroon);
+    font-weight: 400;
+}
+
+.input-pill-small {
+    width: 100%;
+    height: 47px;
+    background: #ffffff;
+    border: 1px solid var(--brand-maroon);
+    border-radius: 50px;
+    padding: 0 18px;
+    font-size: 0.95rem;
+    font-family: var(--font-main);
+    color: var(--brand-maroon);
+    outline: none;
+    box-sizing: border-box;
+    transition: box-shadow 0.2s;
+}
+
+.input-pill-small:focus {
+    box-shadow: 0 0 0 2.5px rgba(122, 24, 16, 0.2);
+}
+
+.select-pill {
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+.help-text-custom {
+    font-size: 0.8rem;
+    color: var(--brand-maroon);
+    opacity: 0.75;
+    margin-top: 2px;
+    padding-left: 12px;
+}
+
+.btn-submit-pill {
+    width: 100%;
+    height: 47px;
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-family: var(--font-main);
+    font-weight: 400;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-submit-pill:hover {
+    opacity: 0.92;
+}
+
+.btn-submit-pill:active {
+    transform: scale(0.98);
+}
+
+/* Kartu Daftar Pengguna */
+.user-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.user-row-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px dashed rgba(122, 24, 16, 0.3);
+    border-radius: 12px;
+    background: #FFFAEC;
+}
+
+.user-row-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
+}
+
+.user-meta-name {
+    font-size: 1rem;
+    color: var(--brand-maroon);
+}
+
+.user-meta-username {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.user-row-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+.btn-user-action {
+    font-size: 0.8rem;
+    text-decoration: none;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.btn-user-action.reset {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.btn-user-action.delete {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.alert-box-error {
+    width: 100%;
+    max-width: 360px;
+    background: #fef2f2;
+    border: 1px solid #ef4444;
+    color: #991b1b;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.alert-box-success {
+    width: 100%;
+    max-width: 360px;
+    background: #f0fdf4;
+    border: 1px solid #22c55e;
+    color: #166534;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.credential-share-card {
+    width: 100%;
+    max-width: 360px;
+    background: #fffbeb;
+    border: 2px dashed #d97706;
+    padding: 14px;
+    border-radius: 14px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.credential-info-box {
+    background: #ffffff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #fde68a;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+/* ================= TAMPILAN MASTER DATA TAB & TABEL ================= */
+.master-tab-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.tab-row-1 {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+}
+
+.tab-row-2 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.tab-pill {
+    width: 89px;
+    height: 47px;
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+    opacity: 0.85;
+}
+
+.tab-pill-wide {
+    width: 114px;
+}
+
+.tab-pill:hover {
+    opacity: 1;
+}
+
+.tab-pill.active {
+    opacity: 1;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--brand-maroon);
+    font-weight: 700;
+    transform: scale(1.03);
+}
+
+/* Panel Tab Tampilan */
+.master-card-section {
+    display: none;
+    width: 100%;
+    animation: fadeInTab 0.2s ease-in-out;
+}
+
+.master-card-section.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.master-card-box {
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.add-master-form {
+    width: 100%;
+    margin-top: 14px;
+    margin-bottom: 18px;
+}
+
+.btn-quick-add {
+    width: 77px;
+    height: 32px;
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: var(--font-main);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-quick-add:hover {
+    opacity: 0.9;
+}
+
+.btn-quick-add:active {
+    transform: scale(0.96);
+}
+
+/* Tabel Kustom Master Sesuai Figma */
+.master-table-wrap {
+    width: 100%;
+    max-height: 240px;
+    overflow-y: auto;
+    border-top: 1px solid #1e293b;
+    padding-top: 8px;
+}
+
+.master-custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.master-custom-table th {
+    font-size: 16px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    color: var(--brand-maroon);
+    padding: 6px 4px 10px 4px;
+}
+
+.master-custom-table td {
+    font-size: 16px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    color: var(--brand-maroon);
+    padding: 8px 4px;
+}
+
+.th-name, .td-name {
+    text-align: left;
+}
+
+.th-action, .td-action {
+    text-align: right;
+}
+
+.link-delete {
+    color: var(--brand-maroon);
+    text-decoration: none;
+    font-size: 16px;
+    font-family: var(--font-main);
+    transition: opacity 0.2s;
+}
+
+.link-delete:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.td-empty {
+    text-align: center;
+    color: #94a3b8;
+    padding: 16px 0;
+}
+
+/* ================= TATA KELOLA MENU MANAJER (FIGMA REPLICA) ================= */
+.btn-capsule-add-menu {
+    width: 100%;
+    max-width: 281px;
+    height: 47px;
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: var(--font-main);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(122, 24, 16, 0.2);
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-capsule-add-menu:hover {
+    opacity: 0.92;
+}
+
+.btn-capsule-add-menu:active {
+    transform: scale(0.98);
+}
+
+.manager-menu-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.manager-recipe-card {
+    width: 100%;
+    max-width: 360px;
+    min-height: 196px;
+    background: #ffffff;
+    border: 1px solid var(--brand-maroon);
+    border-radius: 20px;
+    padding: 20px 22px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(122, 24, 16, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-recipe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.card-recipe-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.card-recipe-tag {
+    font-size: 1rem;
+    color: var(--brand-maroon);
+    font-weight: 400;
+    white-space: nowrap;
+    opacity: 0.85;
+}
+
+.card-recipe-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.recipe-label {
+    font-size: 1rem;
+    color: var(--brand-maroon);
+    font-weight: 400;
+}
+
+.recipe-value {
+    font-size: 1rem;
+    color: var(--brand-maroon);
+    font-weight: 400;
+}
+
+.status-badge-text.status-active {
+    color: #16a34a;
+    font-weight: 700;
+}
+
+.status-badge-text.status-inactive {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+.card-recipe-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+    padding-top: 6px;
+}
+
+.btn-recipe-action {
+    flex: 1;
+    max-width: 110px;
+    height: 33px;
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: var(--font-main);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s, transform 0.1s;
+    box-shadow: 0 2px 6px rgba(122, 24, 16, 0.15);
+}
+
+.btn-recipe-action:hover {
+    opacity: 0.9;
+}
+
+.btn-recipe-action:active {
+    transform: scale(0.96);
+}
+
+/* Tablet & Desktop Layout Upgrade */
+@media (min-width: 768px) {
+    .manager-menu-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 820px;
+    }
+
+    .manager-recipe-card {
+        max-width: 100%;
+    }
+}
+
+/* ================= FORMULA MENU FORM (FIGMA REPLICA) ================= */
+.menu-form-card {
+    max-width: 360px;
+    height: auto; /* Memastikan kontainer fleksibel tumbuh sesuai baris bahan */
+    box-sizing: border-box;
+}
+
+.textarea-pill {
+    height: auto !important;
+    min-height: 75px;
+    border-radius: 20px !important;
+    padding: 12px 18px !important;
+    resize: vertical;
+}
+
+.section-divider-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-family: var(--font-main);
+    color: var(--brand-maroon);
+    font-weight: 400;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed rgba(122, 24, 16, 0.3);
+}
+
+.btn-mini-maroon {
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 3px 12px;
+    font-size: 13px;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-mini-maroon:hover {
+    opacity: 0.9;
+}
+
+.dynamic-group-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.ingredient-card-item {
+    background: #FFFAEC;
+    border: 1px solid rgba(122, 24, 16, 0.4);
+    border-radius: 16px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+}
+
+.ingredient-measure-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.step-card-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+}
+
+.step-circle-badge-small {
+    width: 34px;
+    height: 34px;
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.btn-remove-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-remove-circle:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.form-submit-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 18px;
+    width: 100%;
+}
+
+.btn-pill-submit-form {
+    flex: 1;
+    height: 47px;
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: var(--font-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-pill-submit-form:hover {
+    opacity: 0.92;
+}
+
+.btn-pill-submit-form:active {
+    transform: scale(0.98);
+}
+
+.btn-pill-cancel-form {
+    width: 86px;
+    height: 47px;
+    background-color: #ffffff;
+    border: 1px solid var(--brand-maroon);
+    color: var(--brand-maroon);
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: var(--font-main);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.btn-pill-cancel-form:hover {
+    background-color: #fef2f2;
+}
+
+/* Tablet & Desktop Layout Upgrade */
+@media (min-width: 768px) {
+    .menu-form-card {
+        max-width: 580px;
+        padding: 32px;
+    }
+}
+
+/* ================= OPERATIONAL INSIGHT DASHBOARD (FIGMA REPLICA) ================= */
+.dashboard-badge-header {
+    max-width: 360px;
+    height: 61px;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.dashboard-badge-title {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    margin: 0;
+    line-height: 1;
+}
+
+/* Kartu Rekomendasi Insight Bersama Bar Warna Klaster */
+.insight-card-item {
+    max-width: 360px;
+    min-height: 115px;
+    height: auto;
+    position: relative;
+    padding: 14px 18px 14px 26px !important;
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.cluster-indicator-bar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 7px;
+    bottom: 10px;
+    border-radius: 20px;
+}
+
+.insight-content-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.insight-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Agar jika nama menu sangat panjang, badge klaster tetap rapi */
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.insight-menu-name {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.insight-cluster-label {
+    font-size: 13px;
+    color: var(--brand-maroon);
+    font-weight: 700;
+    line-height: 1;
+    text-align: right;
+    white-space: nowrap; /* Mencegah teks terpotong ke bawah */
+    background: rgba(122, 24, 16, 0.08); /* Aksen latar halus agar mudah dibaca */
+    padding: 4px 10px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.insight-description-text {
+    font-size: 14px;
+    color: var(--brand-maroon);
+    line-height: 1.45;
+    margin: 0;
+}
+
+/* Kartu Tabel Statistik */
+.dashboard-table-card {
+    max-width: 360px;
+    min-height: 196px;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.dashboard-table-title {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.dashboard-table-wrap {
+    width: 100%;
+}
+
+.dashboard-custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard-custom-table thead tr {
+    border-bottom: 1px solid var(--brand-maroon);
+}
+
+.dashboard-custom-table th {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    padding: 6px 0 10px 0;
+}
+
+.dashboard-custom-table td {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--brand-maroon);
+    padding: 8px 0;
+}
+
+.th-left, .td-left {
+    text-align: left;
+}
+
+.th-right, .td-right {
+    text-align: right;
+}
+
+/* Tablet & Desktop Layout Upgrade */
+@media (min-width: 768px) {
+    .dashboard-badge-header {
+        max-width: 820px;
+    }
+
+    .insight-card-item {
+        max-width: 820px;
+    }
+
+    .dashboard-table-card {
+        max-width: 820px;
+    }
+}
+
+/* ================= PROFIL PENGGUNA (FIGMA REPLICA) ================= */
+.profile-card-box {
+    max-width: 360px;
+    height: auto;
+    box-sizing: border-box;
+    padding: 24px 22px !important;
+}
+
+.profile-card-title {
+    font-size: 24px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    color: var(--brand-maroon);
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.profile-card-subtitle {
+    font-size: 14px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    color: var(--brand-maroon);
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 22px;
+    opacity: 0.9;
+}
+
+.profile-info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.profile-field-row {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.profile-display-pill {
+    width: 100%;
+    height: 47px;
+    background-color: #ffffff;
+    border: 1px solid var(--brand-maroon);
+    border-radius: 50px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    color: var(--brand-maroon);
+    box-sizing: border-box;
+}
+
+.profile-role-tag {
+    font-size: 14px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    color: var(--brand-maroon);
+    opacity: 0.85;
+}
+
+.profile-divider-line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--brand-maroon);
+    margin: 22px 0 18px 0;
+    opacity: 0.6;
+}
+
+.profile-section-heading {
+    font-size: 16px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    color: var(--brand-maroon);
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.btn-profile-submit {
+    width: 100%;
+    max-width: 281px;
+    height: 47px;
+    margin: 14px auto 0 auto;
+    background-color: var(--brand-maroon);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(122, 24, 16, 0.2);
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.btn-profile-submit:hover {
+    opacity: 0.92;
+}
+
+.btn-profile-submit:active {
+    transform: scale(0.98);
+}
+
+/* Tablet & Desktop Layout Upgrade */
+@media (min-width: 768px) {
+    .profile-card-box {
+        max-width: 480px;
+        padding: 32px 36px !important;
+    }
+}
