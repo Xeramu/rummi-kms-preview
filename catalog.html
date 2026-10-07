@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Menu & SOP - Rummi</title>
+    <!-- Google Fonts Gayathri sesuai style.css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Topbar Navigasi Header -->
+    <header class="app-topbar">
+        <a href="catalog.html" class="topbar-btn">Rummi KMS</a>
+        <nav class="topbar-manager-nav">
+            <a href="dashboard.html" class="topbar-link">Dashboard</a>
+            <a href="menu-manage.html" class="topbar-link">Menu</a>
+            <a href="master-manage.html" class="topbar-link">Master</a>
+            <a href="user-manage.html" class="topbar-link">User</a>
+            <a href="profile.html" class="topbar-link">Profil</a>
+        </nav>
+    </header>
+
+    <!-- Ornamen Latar Belakang -->
+    <div class="ornament-bg-top">
+        <img src="assets/img/burung.png" alt="" onerror="this.style.display='none';">
+    </div>
+    <div class="ornament-bg-bottom">
+        <img src="assets/img/kopi.png" alt="" onerror="this.style.display='none';">
+    </div>
+
+    <!-- Konten Utama Staf/Manager -->
+    <main class="staff-container">
+        <!-- Search Bar Kapsul Putih Berbingkai Marun -->
+        <form class="search-form-pill" id="searchForm" onsubmit="event.preventDefault(); handleSearch();">
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input-pill" 
+                placeholder="Cari SOP, Bahan, Nama Menu..." 
+                autocomplete="off"
+            >
+            <button type="submit" class="search-submit-icon" aria-label="Cari">🔍</button>
+        </form>
+
+        <!-- Teks Sambutan Pengguna -->
+        <div class="welcome-heading">
+            Selamat Datang, Tim Staf Rummi
+        </div>
+
+        <div class="search-meta" id="searchMeta" style="display: none;">
+            Menampilkan hasil untuk: <strong id="searchQueryText"></strong>
+            <a href="#" class="reset-link" onclick="resetSearch(event)">✕ Reset</a>
+        </div>
+
+        <!-- Grid Kartu Menu -->
+        <div class="menu-cards-list" id="menuCardsList">
+            <!-- Kartu di-render otomatis melalui JavaScript di bawah -->
+        </div>
+    </main>
+
+    <!-- Pita Batik Bawah -->
+    <div class="bottom-batik-band"></div>
+
+    <script>
+        // Mock Data Menu Katalog
+        const mockMenus = [
+            {
+                id: 1,
+                name: "Kopi Susu Rummi",
+                category_name: "Espresso Based",
+                description: "Signature aren latte dengan racikan susu gurih dan espresso house blend seimbang.",
+                serving_time_minutes: 3
+            },
+            {
+                id: 2,
+                name: "V60 Flores Bajawa",
+                category_name: "Manual Brew",
+                description: "Seduhan manual filter dengan tasting notes cokelat, nutty, dan keasaman sitrun lembut.",
+                serving_time_minutes: 5
+            },
+            {
+                id: 3,
+                name: "Matcha Latte",
+                category_name: "Non-Coffee",
+                description: "Matcha murni berkualitas dengan fresh milk steamed dan rasa manis yang pas.",
+                serving_time_minutes: 4
+            },
+            {
+                id: 4,
+                name: "Americano Cold",
+                category_name: "Espresso Based",
+                description: "Espresso ganda disajikan dingin dengan es batu kristal segar.",
+                serving_time_minutes: 2
+            }
+        ];
+
+        function renderMenus(items) {
+            const container = document.getElementById('menuCardsList');
+            if (!items.length) {
+                container.innerHTML = `
+                    <div style="text-align: center; color: #94a3b8; padding: 24px 0;">
+                        <p>Tidak ditemukan SOP atau formula menu yang sesuai.</p>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = items.map(m => `
+                <a href="recipe-detail.html?id=${m.id}" class="staff-menu-card">
+                    <div class="card-inner">
+                        <div class="card-title-row">
+                            <h2 class="card-menu-title">${m.name}</h2>
+                            ${m.category_name ? `<span class="card-tag">#${m.category_name}</span>` : ''}
+                        </div>
+                        <p class="card-menu-desc">${m.description}</p>
+                        <div class="card-footer-info">
+                            <span>Waktu Saji: ± ${m.serving_time_minutes} mnt</span>
+                            <span class="card-arrow">&rarr;</span>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const meta = document.getElementById('searchMeta');
+            const queryText = document.getElementById('queryText');
+
+            if (query) {
+                meta.style.display = 'block';
+                document.getElementById('searchQueryText').textContent = `"${query}"`;
+                const filtered = mockMenus.filter(m => 
+                    m.name.toLowerCase().includes(query) || 
+                    m.description.toLowerCase().includes(query) ||
+                    (m.category_name && m.category_name.toLowerCase().includes(query))
+                );
+                renderMenus(filtered);
+            } else {
+                meta.style.display = 'none';
+                renderMenus(mockMenus);
+            }
+        }
+
+        function resetSearch(e) {
+            e.preventDefault();
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchMeta').style.display = 'none';
+            renderMenus(mockMenus);
+        }
+
+        // Jalankan render awal saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenus(mockMenus);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Pengguna - Rummi KMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Topbar Navigasi -->
+    <header class="app-topbar">
+        <a href="catalog.html" class="topbar-btn">Rummi KMS</a>
+        <nav class="topbar-manager-nav">
+            <a href="dashboard.html" class="topbar-link">Dashboard</a>
+            <a href="menu-manage.html" class="topbar-link">Menu</a>
+            <a href="master-manage.html" class="topbar-link">Master</a>
+            <a href="user-manage.html" class="topbar-link">User</a>
+            <a href="profile.html" class="topbar-link">Profil</a>
+        </nav>
+    </header>
+
+    <!-- Ornamen Latar Belakang -->
+    <div class="ornament-bg-top">
+        <img src="assets/img/burung.png" alt="" onerror="this.style.display='none';">
+    </div>
+    <div class="ornament-bg-bottom">
+        <img src="assets/img/kopi.png" alt="" onerror="this.style.display='none';">
+    </div>
+
+    <main class="staff-container detail-page-flow">
+        <!-- Tombol Kembali Bundar Marun -->
+        <div class="back-nav-row">
+            <a href="catalog.html" class="back-circle-btn" title="Kembali ke Beranda">
+                &larr;
+            </a>
+            <span class="back-nav-label">Kembali Ke Beranda</span>
+        </div>
+
+        <!-- Kotak Kredensial Baru (Tampil Setelah Submit) -->
+        <div id="credentialBox" class="credential-share-card" style="display: none;">
+            <h4 style="font-size: 1.15rem; margin-bottom: 4px;">Kredensial Akun Berhasil Dibuat</h4>
+            <p style="font-size: 0.85rem; margin-bottom: 10px; color: #78350f;">Salin info akun ini dan kirimkan langsung kepada staf:</p>
+            <div class="credential-info-box">
+                Nama: <strong id="credName">-</strong><br>
+                Username: <strong id="credUser">-</strong><br>
+                Password: <strong id="credPass" style="color: #7A1810; background: #FFFAEC; padding: 2px 6px; border-radius: 4px; border: 1px solid #7A1810;">-</strong>
+            </div>
+        </div>
+
+        <!-- FORM TAMBAH USER -->
+        <div class="staff-detail-card" style="max-width: 360px;">
+            <h2 class="form-card-title">Tambah Staf / Akun Baru</h2>
+
+            <form onsubmit="handleUserCreate(event)" class="user-pill-form">
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Nama Lengkap</label>
+                    <input type="text" id="inputFullName" class="input-pill-small" placeholder="Nama Lengkap Staf..." required>
+                </div>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Username</label>
+                    <input type="text" id="inputUsername" class="input-pill-small" placeholder="Username unik..." required>
+                </div>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Peran (Role Akses)</label>
+                    <select id="selectRole" class="input-pill-small select-pill" required>
+                        <option value="Staff" selected>Staff</option>
+                        <option value="Manager">Manager</option>
+                    </select>
+                </div>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Password (Opsional)</label>
+                    <input type="text" id="inputCustomPassword" class="input-pill-small" placeholder="Kosongkan untuk generate acak">
+                    <span class="help-text-custom">Kosongkan untuk generate acak</span>
+                </div>
+
+                <button type="submit" class="btn-submit-pill">
+                    Daftarkan Pengguna
+                </button>
+            </form>
+        </div>
+
+        <!-- TABEL DAFTAR PENGGUNA TERDAFTAR -->
+        <div class="staff-detail-card" style="max-width: 360px;">
+            <h2 class="form-card-title" style="margin-bottom: 14px;">Daftar Akun Pengguna</h2>
+
+            <div class="user-list-wrapper" id="userList">
+                <div class="user-row-item">
+                    <div class="user-row-meta">
+                        <strong class="user-meta-name">Ahmad Barista</strong>
+                        <span class="user-meta-username">@ahmad_rummi</span>
+                        <span class="badge" style="background: #e0f2fe; color: #0369a1;">Staff</span>
+                    </div>
+                    <div class="user-row-actions">
+                        <button type="button" onclick="resetUserPass('ahmad_rummi')" class="btn-user-action reset" style="border:none; cursor:pointer;">Reset</button>
+                        <button type="button" onclick="deleteUserRow(this)" class="btn-user-action delete" style="border:none; cursor:pointer;">Hapus</button>
+                    </div>
+                </div>
+
+                <div class="user-row-item">
+                    <div class="user-row-meta">
+                        <strong class="user-meta-name">Manager Utama</strong>
+                        <span class="user-meta-username">@manager_rummi</span>
+                        <span class="badge" style="background: #fef3c7; color: #92400e;">Manager</span>
+                    </div>
+                    <div class="user-row-actions">
+                        <button type="button" onclick="resetUserPass('manager_rummi')" class="btn-user-action reset" style="border:none; cursor:pointer;">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pita Batik Bawah -->
+    <div class="bottom-batik-band"></div>
+
+    <script>
+        function handleUserCreate(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('inputFullName').value.trim();
+            const username = document.getElementById('inputUsername').value.trim();
+            const role = document.getElementById('selectRole').value;
+            const customPass = document.getElementById('inputCustomPassword').value.trim();
+            const finalPass = customPass || 'Rummi' + Math.floor(1000 + Math.random() * 9000);
+
+            // Munculkan kartu kredensial
+            document.getElementById('credName').textContent = fullName;
+            document.getElementById('credUser').textContent = username;
+            document.getElementById('credPass').textContent = finalPass;
+            document.getElementById('credentialBox').style.display = 'block';
+
+            // Tambahkan baris baru ke daftar
+            const userList = document.getElementById('userList');
+            const badgeStyle = role === 'Manager' ? 'background: #fef3c7; color: #92400e;' : 'background: #e0f2fe; color: #0369a1;';
+            const newRow = document.createElement('div');
+            newRow.className = 'user-row-item';
+            newRow.innerHTML = `
+                <div class="user-row-meta">
+                    <strong class="user-meta-name">${fullName}</strong>
+                    <span class="user-meta-username">@${username}</span>
+                    <span class="badge" style="${badgeStyle}">${role}</span>
+                </div>
+                <div class="user-row-actions">
+                    <button type="button" onclick="resetUserPass('${username}')" class="btn-user-action reset" style="border:none; cursor:pointer;">Reset</button>
+                    <button type="button" onclick="deleteUserRow(this)" class="btn-user-action delete" style="border:none; cursor:pointer;">Hapus</button>
+                </div>
+            `;
+            userList.prepend(newRow);
+
+            // Bersihkan input form
+            document.getElementById('inputFullName').value = '';
+            document.getElementById('inputUsername').value = '';
+            document.getElementById('inputCustomPassword').value = '';
+        }
+
+        function resetUserPass(username) {
+            const newPass = 'RummiPass' + Math.floor(100 + Math.random() * 900);
+            alert(`Password untuk @${username} berhasil direset menjadi:\n${newPass}`);
+        }
+
+        function deleteUserRow(btn) {
+            if (confirm('Hapus akun pengguna ini secara permanen?')) {
+                btn.closest('.user-row-item').remove();
+            }
+        }
+    </script>
+</body>
+</html>

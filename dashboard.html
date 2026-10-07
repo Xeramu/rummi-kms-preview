@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Insight Dashboard - Rummi KMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Topbar Navigasi -->
+    <header class="app-topbar">
+        <a href="catalog.html" class="topbar-btn">Rummi KMS</a>
+        <nav class="topbar-manager-nav">
+            <a href="dashboard.html" class="topbar-link">Dashboard</a>
+            <a href="menu-manage.html" class="topbar-link">Menu</a>
+            <a href="master-manage.html" class="topbar-link">Master</a>
+            <a href="user-manage.html" class="topbar-link">User</a>
+            <a href="profile.html" class="topbar-link">Profil</a>
+        </nav>
+    </header>
+
+    <!-- Ornamen Latar Belakang Statis -->
+    <div class="ornament-bg-top">
+        <img src="assets/img/burung.png" alt="" onerror="this.style.display='none';">
+    </div>
+    <div class="ornament-bg-bottom">
+        <img src="assets/img/kopi.png" alt="" onerror="this.style.display='none';">
+    </div>
+
+    <main class="staff-container detail-page-flow">
+        <!-- Tombol Kembali Bundar Marun -->
+        <div class="back-nav-row" style="max-width: 360px;">
+            <a href="catalog.html" class="back-circle-btn" title="Kembali ke Beranda">
+                &larr;
+            </a>
+            <span class="back-nav-label">Kembali Ke Beranda</span>
+        </div>
+
+        <!-- KARTU 1: HEADER JUDUL DASHBOARD -->
+        <div class="staff-detail-card dashboard-badge-header">
+            <h1 class="dashboard-badge-title">Operational Insight</h1>
+        </div>
+
+        <!-- KARTU 2 & 3: HASIL KLASTER & ANALISIS LOG OPERASIONAL -->
+        <div class="staff-detail-card insight-card-item">
+            <!-- Bar Indikator Oranye Klaster Intensif -->
+            <div class="cluster-indicator-bar" style="background-color: #FF5100;"></div>
+
+            <div class="insight-content-body">
+                <div class="insight-header-row">
+                    <h2 class="insight-menu-name">Kopi Susu Rummi</h2>
+                    <span class="insight-cluster-label">Klaster: Perlu Briefing SOP</span>
+                </div>
+                <p class="insight-description-text">
+                    Menu ini mencatat frekuensi pencarian dan pembukaan resep yang tinggi oleh staf baru dalam 7 hari terakhir. Disarankan melakukan kalibrasi gramasi espresso dan takaran gula aren saat briefing pagi.
+                </p>
+            </div>
+        </div>
+
+        <div class="staff-detail-card insight-card-item">
+            <!-- Bar Indikator Kuning/Emas Klaster Stabil -->
+            <div class="cluster-indicator-bar" style="background-color: #FFA100;"></div>
+
+            <div class="insight-content-body">
+                <div class="insight-header-row">
+                    <h2 class="insight-menu-name">V60 Flores Bajawa</h2>
+                    <span class="insight-cluster-label">Klaster: Operasional Stabil</span>
+                </div>
+                <p class="insight-description-text">
+                    Akses formula seduh manual konsisten dan stabil. Waktu saji rata-rata staf bar telah memenuhi target standar (± 5 menit).
+                </p>
+            </div>
+        </div>
+
+        <!-- KARTU 4: MENU YANG SERING DIAKSES STAF -->
+        <div class="staff-detail-card dashboard-table-card">
+            <h2 class="dashboard-table-title">Menu Yang Sering<br>Diakses Staff</h2>
+
+            <div class="dashboard-table-wrap">
+                <table class="dashboard-custom-table">
+                    <thead>
+                        <tr>
+                            <th class="th-left">Nama Menu</th>
+                            <th class="th-right">Total Akses</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td-left">Kopi Susu Rummi</td>
+                            <td class="td-right">142 x</td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">V60 Flores Bajawa</td>
+                            <td class="td-right">89 x</td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">Matcha Latte</td>
+                            <td class="td-right">54 x</td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">Cold Brew Berry</td>
+                            <td class="td-right">31 x</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- KARTU 5: PENCARIAN TERBANYAK -->
+        <div class="staff-detail-card dashboard-table-card">
+            <h2 class="dashboard-table-title">Pencarian Terbanyak</h2>
+
+            <div class="dashboard-table-wrap">
+                <table class="dashboard-custom-table">
+                    <thead>
+                        <tr>
+                            <th class="th-left">Query Pencarian</th>
+                            <th class="th-right">Total Dicari</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td-left">“Aren”</td>
+                            <td class="td-right">62 x</td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">“Espresso”</td>
+                            <td class="td-right">48 x</td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">“Takaran V60”</td>
+                            <td class="td-right">35 x</td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">“Susu Evaporasi”</td>
+                            <td class="td-right">21 x</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pita Batik Bawah Statis -->
+    <div class="bottom-batik-band"></div>
+</body>
+</html>

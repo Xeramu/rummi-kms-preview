@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Formula Menu - Rummi KMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Topbar Navigasi -->
+    <header class="app-topbar">
+        <a href="catalog.html" class="topbar-btn">Rummi KMS</a>
+        <nav class="topbar-manager-nav">
+            <a href="dashboard.html" class="topbar-link">Dashboard</a>
+            <a href="menu-manage.html" class="topbar-link">Menu</a>
+            <a href="master-manage.html" class="topbar-link">Master</a>
+            <a href="user-manage.html" class="topbar-link">User</a>
+            <a href="profile.html" class="topbar-link">Profil</a>
+        </nav>
+    </header>
+
+    <!-- Ornamen Latar Belakang -->
+    <div class="ornament-bg-top">
+        <img src="assets/img/burung.png" alt="" onerror="this.style.display='none';">
+    </div>
+    <div class="ornament-bg-bottom">
+        <img src="assets/img/kopi.png" alt="" onerror="this.style.display='none';">
+    </div>
+
+    <main class="staff-container detail-page-flow">
+        <!-- Search Bar Kapsul Putih -->
+        <div class="search-form-pill" style="max-width: 362px; height: 55px; margin-bottom: 18px;">
+            <input 
+                type="text" 
+                id="searchMenuAdminInput" 
+                onkeyup="filterManagerMenuCards()" 
+                class="search-input-pill" 
+                placeholder="Cari nama menu atau kategori resep..."
+                autocomplete="off"
+            >
+            <span class="search-submit-icon">🔍</span>
+        </div>
+
+        <!-- Tombol Kembali Bundar Marun -->
+        <div class="back-nav-row" style="max-width: 360px;">
+            <a href="catalog.html" class="back-circle-btn" title="Kembali ke Beranda">
+                &larr;
+            </a>
+            <span class="back-nav-label">Kembali Ke Beranda</span>
+        </div>
+
+        <!-- Tombol Tambah Menu Baru Kapsul Marun -->
+        <div style="width: 100%; max-width: 360px; display: flex; justify-content: center; margin: 10px 0 16px 0;">
+            <a href="menu-form.html" class="btn-capsule-add-menu">
+                Tambah Menu Baru
+            </a>
+        </div>
+
+        <!-- DAFTAR KARTU MENU MANAJER -->
+        <div class="manager-menu-list" id="managerMenuList">
+            <div class="manager-recipe-card">
+                <div class="card-recipe-header">
+                    <h2 class="card-recipe-title">Kopi Susu Rummi</h2>
+                    <span class="card-recipe-tag">#Espresso Based</span>
+                </div>
+                <div class="card-recipe-row">
+                    <span class="recipe-label">Waktu Saji</span>
+                    <span class="recipe-value">3 menit</span>
+                </div>
+                <div class="card-recipe-row">
+                    <span class="recipe-label">Status</span>
+                    <span class="recipe-value status-badge-text status-active">Aktif</span>
+                </div>
+                <div class="card-recipe-row" style="margin-bottom: 8px;">
+                    <span class="recipe-label">Aksi</span>
+                </div>
+                <div class="card-recipe-actions">
+                    <a href="menu-form.html?id=1" class="btn-recipe-action">Sunting</a>
+                    <button type="button" onclick="confirmDeleteMenu(this, 'Kopi Susu Rummi')" class="btn-recipe-action" style="border:none; cursor:pointer;">Hapus</button>
+                </div>
+            </div>
+
+            <div class="manager-recipe-card">
+                <div class="card-recipe-header">
+                    <h2 class="card-recipe-title">V60 Flores Bajawa</h2>
+                    <span class="card-recipe-tag">#Manual Brew</span>
+                </div>
+                <div class="card-recipe-row">
+                    <span class="recipe-label">Waktu Saji</span>
+                    <span class="recipe-value">5 menit</span>
+                </div>
+                <div class="card-recipe-row">
+                    <span class="recipe-label">Status</span>
+                    <span class="recipe-value status-badge-text status-active">Aktif</span>
+                </div>
+                <div class="card-recipe-row" style="margin-bottom: 8px;">
+                    <span class="recipe-label">Aksi</span>
+                </div>
+                <div class="card-recipe-actions">
+                    <a href="menu-form.html?id=2" class="btn-recipe-action">Sunting</a>
+                    <button type="button" onclick="confirmDeleteMenu(this, 'V60 Flores Bajawa')" class="btn-recipe-action" style="border:none; cursor:pointer;">Hapus</button>
+                </div>
+            </div>
+
+            <div class="manager-recipe-card">
+                <div class="card-recipe-header">
+                    <h2 class="card-recipe-title">Cold Brew Berry</h2>
+                    <span class="card-recipe-tag">#Signature Mocktail</span>
+                </div>
+                <div class="card-recipe-row">
+                    <span class="recipe-label">Waktu Saji</span>
+                    <span class="recipe-value">4 menit</span>
+                </div>
+                <div class="card-recipe-row">
+                    <span class="recipe-label">Status</span>
+                    <span class="recipe-value status-badge-text status-inactive">Non Aktif</span>
+                </div>
+                <div class="card-recipe-row" style="margin-bottom: 8px;">
+                    <span class="recipe-label">Aksi</span>
+                </div>
+                <div class="card-recipe-actions">
+                    <a href="menu-form.html?id=3" class="btn-recipe-action">Sunting</a>
+                    <button type="button" onclick="confirmDeleteMenu(this, 'Cold Brew Berry')" class="btn-recipe-action" style="border:none; cursor:pointer;">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pita Batik Bawah Statis -->
+    <div class="bottom-batik-band"></div>
+
+    <script>
+        function filterManagerMenuCards() {
+            const input = document.getElementById("searchMenuAdminInput");
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll("#managerMenuList .manager-recipe-card");
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(filter) ? "" : "none";
+            });
+        }
+
+        function confirmDeleteMenu(buttonElement, name) {
+            if (confirm(`Apakah Anda yakin ingin menghapus formula menu "${name}"?`)) {
+                buttonElement.closest('.manager-recipe-card').remove();
+            }
+        }
+    </script>
+</body>
+</html>

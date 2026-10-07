@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Data - Rummi KMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Topbar Navigasi -->
+    <header class="app-topbar">
+        <a href="catalog.html" class="topbar-btn">Rummi KMS</a>
+        <nav class="topbar-manager-nav">
+            <a href="dashboard.html" class="topbar-link">Dashboard</a>
+            <a href="menu-manage.html" class="topbar-link">Menu</a>
+            <a href="master-manage.html" class="topbar-link">Master</a>
+            <a href="user-manage.html" class="topbar-link">User</a>
+            <a href="profile.html" class="topbar-link">Profil</a>
+        </nav>
+    </header>
+
+    <!-- Ornamen Latar Belakang -->
+    <div class="ornament-bg-top">
+        <img src="assets/img/burung.png" alt="" onerror="this.style.display='none';">
+    </div>
+    <div class="ornament-bg-bottom">
+        <img src="assets/img/kopi.png" alt="" onerror="this.style.display='none';">
+    </div>
+
+    <main class="staff-container detail-page-flow">
+        <!-- Tombol Kembali Bundar Marun -->
+        <div class="back-nav-row">
+            <a href="catalog.html" class="back-circle-btn" title="Kembali ke Beranda">
+                &larr;
+            </a>
+            <span class="back-nav-label">Kembali Ke Beranda</span>
+        </div>
+
+        <!-- PILIHAN TAB MASTER ENTITAS -->
+        <div class="master-tab-group">
+            <div class="tab-row-1">
+                <button type="button" class="tab-pill active" onclick="switchTab('sajian', this)">Sajian</button>
+                <button type="button" class="tab-pill" onclick="switchTab('kategori', this)">Kategori</button>
+                <button type="button" class="tab-pill" onclick="switchTab('takaran', this)">Takaran</button>
+            </div>
+            <div class="tab-row-2">
+                <button type="button" class="tab-pill tab-pill-wide" onclick="switchTab('bahan', this)">Bahan Baku</button>
+            </div>
+        </div>
+
+        <!-- 1. TAB: MASTER SAJIAN -->
+        <div id="tab-sajian" class="master-card-section active">
+            <div class="staff-detail-card master-card-box">
+                <h2 class="form-card-title">Master Sajian</h2>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Cari Sajian</label>
+                    <input type="text" class="input-pill-small" onkeyup="filterMasterTable(this, 'table-sajian')" placeholder="Ketik nama sajian...">
+                </div>
+
+                <form onsubmit="handleQuickAdd(event, 'table-sajian', 'inputSajian')" class="add-master-form">
+                    <div class="form-group-custom" style="width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <label class="form-label-custom">Nama Sajian Baru</label>
+                            <button type="submit" class="btn-quick-add">Tambah</button>
+                        </div>
+                        <input type="text" id="inputSajian" class="input-pill-small" placeholder="Nama sajian baru..." required>
+                    </div>
+                </form>
+
+                <div class="master-table-wrap">
+                    <table class="master-custom-table" id="table-sajian">
+                        <thead>
+                            <tr>
+                                <th class="th-name">Nama</th>
+                                <th class="th-action">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td-name">Beverage Hot</td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                            <tr>
+                                <td class="td-name">Beverage Cold</td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                            <tr>
+                                <td class="td-name">Pastry & Snacks</td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. TAB: MASTER KATEGORI -->
+        <div id="tab-kategori" class="master-card-section">
+            <div class="staff-detail-card master-card-box">
+                <h2 class="form-card-title">Master Kategori</h2>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Cari Kategori</label>
+                    <input type="text" class="input-pill-small" onkeyup="filterMasterTable(this, 'table-kategori')" placeholder="Ketik nama kategori...">
+                </div>
+
+                <form onsubmit="handleCategoryAdd(event)" class="add-master-form">
+                    <div class="form-group-custom" style="width: 100%;">
+                        <label class="form-label-custom">Pilih Sajian</label>
+                        <select id="selectCatSajian" class="input-pill-small select-pill" required>
+                            <option value="Beverage Cold">Beverage Cold</option>
+                            <option value="Beverage Hot">Beverage Hot</option>
+                            <option value="Pastry & Snacks">Pastry & Snacks</option>
+                        </select>
+                    </div>
+                    <div class="form-group-custom" style="width: 100%; margin-top: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <label class="form-label-custom">Nama Kategori Baru</label>
+                            <button type="submit" class="btn-quick-add">Tambah</button>
+                        </div>
+                        <input type="text" id="inputCatName" class="input-pill-small" placeholder="Nama kategori baru..." required>
+                    </div>
+                </form>
+
+                <div class="master-table-wrap">
+                    <table class="master-custom-table" id="table-kategori">
+                        <thead>
+                            <tr>
+                                <th class="th-name">Kategori (Sajian)</th>
+                                <th class="th-action">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td-name">Espresso Based <small style="color: #64748b;">(Beverage Cold)</small></td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                            <tr>
+                                <td class="td-name">Manual Brew <small style="color: #64748b;">(Beverage Hot)</small></td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                            <tr>
+                                <td class="td-name">Signature Mocktail <small style="color: #64748b;">(Beverage Cold)</small></td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. TAB: MASTER TAKARAN -->
+        <div id="tab-takaran" class="master-card-section">
+            <div class="staff-detail-card master-card-box">
+                <h2 class="form-card-title">Master Satuan Takaran</h2>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Cari Satuan</label>
+                    <input type="text" class="input-pill-small" onkeyup="filterMasterTable(this, 'table-takaran')" placeholder="Ketik nama atau singkatan...">
+                </div>
+
+                <form onsubmit="handleUnitAdd(event)" class="add-master-form">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                        <label class="form-label-custom">Nama & Singkatan Baru</label>
+                        <button type="submit" class="btn-quick-add">Tambah</button>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="inputUnitName" class="input-pill-small" style="flex: 2;" placeholder="Nama (cth: Mililiter)" required>
+                        <input type="text" id="inputUnitAbbr" class="input-pill-small" style="flex: 1;" placeholder="Singkatan (ml)" required>
+                    </div>
+                </form>
+
+                <div class="master-table-wrap">
+                    <table class="master-custom-table" id="table-takaran">
+                        <thead>
+                            <tr>
+                                <th class="th-name">Satuan</th>
+                                <th class="th-action">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td-name">Mililiter (ml)</td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                            <tr>
+                                <td class="td-name">Gram (gr)</td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                            <tr>
+                                <td class="td-name">Sendok Takar (pump)</td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. TAB: MASTER BAHAN BAKU -->
+        <div id="tab-bahan" class="master-card-section">
+            <div class="staff-detail-card master-card-box">
+                <h2 class="form-card-title">Master Bahan Baku</h2>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Cari Bahan Baku</label>
+                    <input type="text" class="input-pill-small" onkeyup="filterMasterTable(this, 'table-bahan')" placeholder="Ketik nama bahan...">
+                </div>
+
+                <form onsubmit="handleQuickAdd(event, 'table-bahan', 'inputBahan')" class="add-master-form">
+                    <div class="form-group-custom" style="width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <label class="form-label-custom">Nama Bahan Baku Baru</label>
+                            <button type="submit" class="btn-quick-add">Tambah</button>
+                        </div>
+                        <input type="text" id="inputBahan" class="input-pill-small" placeholder="Nama bahan baru..." required>
+                    </div>
+                </form>
+
+                <div class="master-table-wrap">
+                    <table class="master-custom-table" id="table-bahan">
+                        <thead>
+                            <tr>
+                                <th class="th-name">Nama Bahan</th>
+                                <th class="th-action">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td-name">Espresso House Blend</td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                            <tr>
+                                <td class="td-name">Fresh Milk Pasteurised</td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                            <tr>
+                                <td class="td-name">Sirup Gula Aren Rummi</td>
+                                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pita Batik Bawah -->
+    <div class="bottom-batik-band"></div>
+
+    <script>
+        function switchTab(tabName, btnElement) {
+            document.querySelectorAll('.master-card-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-pill').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById('tab-' + tabName).classList.add('active');
+            btnElement.classList.add('active');
+        }
+
+        function filterMasterTable(input, tableId) {
+            const filter = input.value.toLowerCase();
+            const rows = document.querySelectorAll('#' + tableId + ' tbody tr');
+            rows.forEach(row => {
+                const text = row.querySelector('.td-name')?.textContent.toLowerCase() || '';
+                row.style.display = text.includes(filter) ? '' : 'none';
+            });
+        }
+
+        function deleteTableRow(link, e) {
+            e.preventDefault();
+            if (confirm('Hapus item ini dari data master?')) {
+                link.closest('tr').remove();
+            }
+        }
+
+        function handleQuickAdd(e, tableId, inputId) {
+            e.preventDefault();
+            const input = document.getElementById(inputId);
+            const val = input.value.trim();
+            if (!val) return;
+
+            const tbody = document.querySelector('#' + tableId + ' tbody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="td-name">${val}</td>
+                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+            `;
+            tbody.prepend(row);
+            input.value = '';
+        }
+
+        function handleCategoryAdd(e) {
+            e.preventDefault();
+            const name = document.getElementById('inputCatName').value.trim();
+            const sajian = document.getElementById('selectCatSajian').value;
+            if (!name) return;
+
+            const tbody = document.querySelector('#table-kategori tbody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="td-name">${name} <small style="color: #64748b;">(${sajian})</small></td>
+                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+            `;
+            tbody.prepend(row);
+            document.getElementById('inputCatName').value = '';
+        }
+
+        function handleUnitAdd(e) {
+            e.preventDefault();
+            const name = document.getElementById('inputUnitName').value.trim();
+            const abbr = document.getElementById('inputUnitAbbr').value.trim();
+            if (!name || !abbr) return;
+
+            const tbody = document.querySelector('#table-takaran tbody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="td-name">${name} (${abbr})</td>
+                <td class="td-action"><a href="#" onclick="deleteTableRow(this, event)" class="link-delete">Hapus</a></td>
+            `;
+            tbody.prepend(row);
+            document.getElementById('inputUnitName').value = '';
+            document.getElementById('inputUnitAbbr').value = '';
+        }
+    </script>
+</body>
+</html>
